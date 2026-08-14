@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LDS Priesthood — Every Ordinance, Word for Word</title>
+  <meta name="description" content="Sacrament prayers, baptism, confirmation, blessing the sick — the exact wording from the General Handbook, in your pocket. Free on the App Store. Available in 18 languages." />
+  <meta property="og:title" content="LDS Priesthood — Every Ordinance, Word for Word" />
+  <meta property="og:description" content="The exact wording for every ordinance and blessing, in 18 languages. Free on iPhone." />
+  <meta property="og:image" content="https://zhiyao92.github.io/lds-priesthood-landing/app-icon.png" />
+  <meta property="og:url" content="https://zhiyao92.github.io/lds-priesthood-landing/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="app-icon.png" />
+  <style>
+    /* Light only. Never invert — many readers are older and rely on high contrast. */
+    :root {
+      color-scheme: light;
+
+      --blue:        #12558F;  /* 7.4:1 on white */
+      --blue-dark:   #0E4373;
+      --blue-tint:   #EDF4FB;
+      --blue-line:   #C6DCF0;
+
+      --page:        #FFFFFF;
+      --panel:       #F4F7FA;
+      --card:        #FFFFFF;
+      --line:        #D9E0E8;
+
+      --ink:         #16181C;  /* 16.9:1 on white */
+      --ink-soft:    #43484F;  /*  9.3:1 on white */
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--page);
+      color: var(--ink);
+      font-size: 19px;      /* larger base than usual, on purpose */
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--blue); }
+
+    .wrap { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 50;
+      background: var(--page);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      max-width: 1000px; margin: 0 auto; padding: 12px 24px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
+    .nav-logo img { width: 44px; height: 44px; border-radius: 10px; border: 1px solid var(--line); }
+    .nav-logo span { font-weight: 700; font-size: 1.05rem; }
+    .nav-cta {
+      background: var(--blue); color: #fff;
+      font-weight: 700; font-size: 1rem;
+      padding: 12px 22px; min-height: 48px;
+      display: inline-flex; align-items: center;
+      border-radius: 12px; text-decoration: none;
+    }
+    .nav-cta:hover { background: var(--blue-dark); }
+
+    /* ── HERO ── */
+    .hero { padding: 64px 0 56px; text-align: center; }
+    .hero-badge {
+      display: inline-block;
+      background: var(--blue-tint); border: 1px solid var(--blue-line);
+      color: var(--blue-dark);
+      border-radius: 100px; padding: 8px 20px;
+      font-size: 0.95rem; font-weight: 700;
+      margin-bottom: 28px;
+    }
+    h1 {
+      font-size: clamp(2.1rem, 5.5vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.18;
+      letter-spacing: -0.01em;   /* kept gentle — tight tracking hurts legibility */
+      max-width: 18ch;
+      margin: 0 auto;
+    }
+    .hero-sub {
+      margin: 24px auto 0;
+      font-size: clamp(1.1rem, 2.4vw, 1.3rem);
+      color: var(--ink-soft);
+      max-width: 34ch;
+    }
+    .hero-actions {
+      margin-top: 36px;
+      display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      background: var(--blue); color: #fff;
+      font-weight: 700; font-size: 1.15rem;
+      padding: 18px 36px; min-height: 60px;
+      border-radius: 14px; text-decoration: none;
+    }
+    .btn-primary:hover { background: var(--blue-dark); }
+    .btn-primary svg { width: 22px; height: 22px; flex-shrink: 0; }
+    .btn-secondary {
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--page); color: var(--ink);
+      border: 2px solid var(--line);
+      font-weight: 600; font-size: 1.05rem;
+      padding: 16px 30px; min-height: 60px;
+      border-radius: 14px; text-decoration: none;
+    }
+    .btn-secondary:hover { border-color: var(--blue); color: var(--blue); }
+
+    .hero-note { margin-top: 22px; font-size: 1rem; color: var(--ink-soft); }
+
+    /* ── SECTIONS ── */
+    section { padding: 68px 0; }
+    .panel { background: var(--panel); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .eyebrow {
+      font-size: 0.95rem; font-weight: 700; letter-spacing: 0.04em;
+      text-transform: uppercase; color: var(--blue); margin-bottom: 12px;
+    }
+    h2 {
+      font-size: clamp(1.7rem, 4vw, 2.4rem);
+      font-weight: 800; line-height: 1.25; letter-spacing: -0.01em;
+      max-width: 22ch;
+    }
+    .lede { margin-top: 16px; font-size: 1.15rem; color: var(--ink-soft); max-width: 60ch; }
+
+    /* ── CARD GRID ── */
+    .grid {
+      margin-top: 40px;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;
+    }
+    .card {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 16px; padding: 28px;
+    }
+    .card-icon { font-size: 2.1rem; line-height: 1; margin-bottom: 14px; }
+    .card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 10px; }
+    .card p { font-size: 1.05rem; color: var(--ink-soft); }
+
+    /* ── FEATURE BLOCKS ── */
+    .feature {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 56px;
+      align-items: center; margin-bottom: 64px;
+    }
+    .feature:last-child { margin-bottom: 0; }
+    .feature h3 { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 800; line-height: 1.3; margin-bottom: 14px; }
+    .feature p { font-size: 1.1rem; color: var(--ink-soft); }
+    .tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .tag {
+      background: var(--blue-tint); border: 1px solid var(--blue-line); color: var(--blue-dark);
+      border-radius: 100px; padding: 7px 16px; font-size: 0.98rem; font-weight: 600;
+    }
+
+    /* Sample panel — a plain, readable mock of what the app shows */
+    .sample {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 18px; padding: 30px 28px;
+    }
+    .sample-label {
+      font-size: 0.9rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.04em; color: var(--blue); margin-bottom: 8px;
+    }
+    .sample-title { font-size: 1.3rem; font-weight: 800; margin-bottom: 18px; }
+    .sample-text {
+      background: var(--blue-tint); border: 1px solid var(--blue-line);
+      border-radius: 12px; padding: 20px;
+      font-size: 1.1rem; line-height: 1.75; color: var(--ink);
+    }
+    .sample-foot { margin-top: 16px; font-size: 1rem; color: var(--ink-soft); }
+    .sample-row {
+      border: 1px solid var(--line); border-radius: 12px;
+      padding: 16px 18px; margin-bottom: 10px;
+      font-size: 1.08rem; font-weight: 600;
+    }
+    .sample-row span { display: block; font-size: 0.98rem; font-weight: 400; color: var(--ink-soft); margin-top: 2px; }
+
+    /* ── LANGUAGES ── */
+    .langs {
+      margin-top: 32px;
+      display: flex; flex-wrap: wrap; gap: 10px;
+    }
+    .lang {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 100px; padding: 9px 18px; font-size: 1rem; font-weight: 600;
+    }
+
+    /* ── STEPS ── */
+    .steps { margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .step { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 28px; }
+    .step-num {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--blue); color: #fff;
+      font-size: 1.2rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+    }
+    .step h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
+    .step p { font-size: 1.05rem; color: var(--ink-soft); }
+
+    /* ── CTA ── */
+    .cta { text-align: center; padding: 80px 0; }
+    .cta img { width: 96px; height: 96px; border-radius: 22px; border: 1px solid var(--line); margin: 0 auto 26px; display: block; }
+    .cta h2 { margin: 0 auto 16px; max-width: 20ch; }
+    .cta p { color: var(--ink-soft); max-width: 46ch; margin: 0 auto 34px; font-size: 1.15rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 40px 0 56px; border-top: 1px solid var(--line);
+      font-size: 1rem; color: var(--ink-soft); text-align: center;
+    }
+    .footer-links { display: flex; gap: 22px; flex-wrap: wrap; justify-content: center; margin-bottom: 14px; }
+    .footer-links a { font-weight: 600; }
+    .disclaimer { max-width: 62ch; margin: 18px auto 0; font-size: 0.95rem; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 800px) {
+      body { font-size: 18px; }
+      .feature { grid-template-columns: 1fr; gap: 32px; }
+      .feature.flip .feature-text { order: -1; }
+      h1, h2 { max-width: 100%; }
+      .nav-logo span { display: none; }
+      .btn-primary, .btn-secondary { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+
+    /* ── IN-APP BROWSER NOTICE ── */
+    #iab { display: none; position: fixed; inset: 0; z-index: 999; background: rgba(0,0,0,0.5); align-items: center; justify-content: center; padding: 24px; }
+    #iab.show { display: flex; }
+    .iab-card { background: #fff; border-radius: 18px; padding: 30px 26px; max-width: 420px; width: 100%; }
+    .iab-card h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; }
+    .iab-card p { font-size: 1.05rem; color: var(--ink-soft); margin-bottom: 20px; }
+    .iab-step { display: flex; gap: 14px; align-items: center; background: var(--panel); border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; font-size: 1.02rem; }
+    .iab-step b { width: 30px; height: 30px; border-radius: 50%; background: var(--blue); color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.95rem; }
+    .iab-dismiss { width: 100%; margin-top: 14px; padding: 15px; min-height: 52px; background: #fff; border: 2px solid var(--line); border-radius: 12px; font-size: 1.05rem; font-weight: 600; color: var(--ink-soft); cursor: pointer; font-family: inherit; }
+  </style>
+</head>
+<body>
+
+<!-- IN-APP BROWSER NOTICE -->
+<div id="iab">
+  <div class="iab-card">
+    <h3>Please open this page in Safari</h3>
+    <p>This app browser cannot open the App Store. Switching takes a moment.</p>
+    <div class="iab-step"><b>1</b><div>Tap the <strong>&#8943;</strong> menu at the top right</div></div>
+    <div class="iab-step"><b>2</b><div>Choose <strong>Open in browser</strong></div></div>
+    <div class="iab-step"><b>3</b><div>Tap <strong>Download Free</strong></div></div>
+    <button class="iab-dismiss" onclick="document.getElementById('iab').classList.remove('show')">Close</button>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#top">
+      <img src="app-icon.png" alt="LDS Priesthood app icon" />
+      <span>LDS Priesthood</span>
+    </a>
+    <a class="nav-cta" href="https://apps.apple.com/app/id1502509285">Download Free</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="wrap" id="top">
+  <section class="hero">
+    <div class="hero-badge">Free on iPhone and iPad</div>
+    <h1>Every ordinance, word for word</h1>
+    <p class="hero-sub">
+      When you are asked to serve, the wording is right there — exactly as the
+      General Handbook gives it.
+    </p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="https://apps.apple.com/app/id1502509285">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+        </svg>
+        Download Free
+      </a>
+      <a class="btn-secondary" href="#inside">See what is inside</a>
+    </div>
+    <p class="hero-note">Works without internet &nbsp;·&nbsp; Available in 18 languages</p>
+  </section>
+</div>
+
+<!-- WHY -->
+<div class="panel">
+  <div class="wrap">
+    <section>
+      <p class="eyebrow">Why brethren use it</p>
+      <h2>Being asked to serve should not mean scrambling</h2>
+      <p class="lede">
+        A blessing is often requested with no warning at all — in a hospital room,
+        at a family gathering, on a Sunday morning. This app puts the words in
+        your hand so you can be present instead of worried.
+      </p>
+      <div class="grid">
+        <div class="card">
+          <div class="card-icon">&#128172;</div>
+          <h3>The exact wording</h3>
+          <p>Sacrament prayers are given word for word. Nothing is paraphrased or shortened.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#128246;</div>
+          <h3>No internet needed</h3>
+          <p>Chapels and hospitals often have poor signal. Everything is stored on your phone.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#127760;</div>
+          <h3>Your own language</h3>
+          <p>Read in any of 18 languages, including Tagalog, Samoan, Tongan, Spanish and Korean.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<div class="wrap">
+  <section id="inside">
+    <p class="eyebrow">What is inside</p>
+    <h2>Ordinances, blessings and callings in one place</h2>
+    <div style="height:44px"></div>
+
+    <div class="feature">
+      <div class="feature-text">
+        <h3>Ordinances and blessings</h3>
+        <p>
+          Every ordinance a priesthood holder performs, following the General
+          Handbook exactly. Open it, read it, and know the wording is right.
+        </p>
+        <div class="tags">
+          <span class="tag">Sacrament prayers</span>
+          <span class="tag">Baptism</span>
+          <span class="tag">Confirmation</span>
+          <span class="tag">Blessing the sick</span>
+          <span class="tag">Naming a child</span>
+          <span class="tag">Conferring the priesthood</span>
+        </div>
+      </div>
+      <div class="sample">
+        <div class="sample-label">Sacrament &#183; Bread</div>
+        <div class="sample-title">The exact prayer</div>
+        <div class="sample-text">
+          O God, the Eternal Father, we ask thee in the name of thy Son, Jesus
+          Christ, to bless and sanctify this bread to the souls of all those who
+          partake of it&#8230;
+        </div>
+        <p class="sample-foot">Shown in full in the app, with larger text if you need it.</p>
+      </div>
+    </div>
+
+    <div class="feature flip">
+      <div class="sample">
+        <div class="sample-label">Offices</div>
+        <div class="sample-title">What each office may do</div>
+        <div class="sample-row">Deacon<span>Passes the sacrament, collects fast offerings</span></div>
+        <div class="sample-row">Teacher<span>Prepares the sacrament, ministers with a companion</span></div>
+        <div class="sample-row">Priest<span>Blesses the sacrament, baptizes, ordains</span></div>
+        <div class="sample-row">Elder<span>Confers the Holy Ghost, gives blessings</span></div>
+      </div>
+      <div class="feature-text">
+        <h3>Offices and duties, made clear</h3>
+        <p>
+          A plain reference to each priesthood office and what it authorises —
+          useful for young men learning their duties, and for the leaders
+          teaching them.
+        </p>
+        <div class="tags">
+          <span class="tag">Aaronic Priesthood</span>
+          <span class="tag">Melchizedek Priesthood</span>
+          <span class="tag">Leadership guidance</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-text">
+        <h3>Ready before you are asked</h3>
+        <p>
+          Save the ordinances you perform most often, keep a private journal of
+          the blessings you have given, and place a widget on your Home Screen so
+          the app is one tap away.
+        </p>
+        <div class="tags">
+          <span class="tag">Favourites</span>
+          <span class="tag">Private journal</span>
+          <span class="tag">Home Screen widget</span>
+          <span class="tag">Read aloud</span>
+          <span class="tag">Larger text</span>
+        </div>
+      </div>
+      <div class="sample">
+        <div class="sample-label">On your Home Screen</div>
+        <div class="sample-title">One tap away</div>
+        <div class="sample-row">Saved &#183; Blessing the sick<span>Opens straight to the wording</span></div>
+        <div class="sample-row">Saved &#183; Sacrament prayers<span>Bread and water, side by side</span></div>
+        <div class="sample-row">Journal<span>Private to you, kept on your account</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- LANGUAGES -->
+<div class="panel">
+  <div class="wrap">
+    <section>
+      <p class="eyebrow">18 languages</p>
+      <h2>Read it in the language you pray in</h2>
+      <p class="lede">
+        Change the language at any time in Settings. The ordinance wording, the
+        menus and the guidance all follow.
+      </p>
+      <div class="langs">
+        <span class="lang">English</span>
+        <span class="lang">Espa&ntilde;ol</span>
+        <span class="lang">Portugu&ecirc;s</span>
+        <span class="lang">Tagalog</span>
+        <span class="lang">Cebuano</span>
+        <span class="lang">Bahasa Indonesia</span>
+        <span class="lang">Bahasa Melayu</span>
+        <span class="lang">Ti&#7871;ng Vi&#7879;t</span>
+        <span class="lang">&#3652;&#3607;&#3618;</span>
+        <span class="lang">&#4111;&#4098;&#4117;&#4131;&#4160;&#4098;&#4155;&#4128;&#4145;&#4142;</span>
+        <span class="lang">&#26085;&#26412;&#35486;</span>
+        <span class="lang">&#54620;&#44397;&#50612;</span>
+        <span class="lang">&#31616;&#20307;&#20013;&#25991;</span>
+        <span class="lang">&#32321;&#39636;&#20013;&#25991;</span>
+        <span class="lang">Gagana S&#257;moa</span>
+        <span class="lang">Lea faka-Tonga</span>
+        <span class="lang">Yor&ugrave;b&aacute;</span>
+        <span class="lang">Igbo</span>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- STEPS -->
+<div class="wrap">
+  <section>
+    <p class="eyebrow">Getting started</p>
+    <h2>Three steps, about one minute</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Tap Download Free</h3>
+        <p>The App Store opens on your iPhone or iPad. The app costs nothing to download.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Choose your language</h3>
+        <p>Pick from 18 languages the first time you open it. You can change it later.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Save what you use</h3>
+        <p>Mark the ordinances you perform most often so they are always at the top.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- CTA -->
+<div class="panel">
+  <div class="wrap">
+    <section class="cta">
+      <img src="app-icon.png" alt="LDS Priesthood" />
+      <h2>Be ready the next time you are asked</h2>
+      <p>Free to download. No account needed to read the ordinances.</p>
+      <a class="btn-primary" href="https://apps.apple.com/app/id1502509285">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+        </svg>
+        Download Free
+      </a>
+    </section>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-links">
+      <a href="https://apps.apple.com/app/id1502509285">App Store</a>
+      <a href="https://zhiyao92.github.io/ios-apps/">More apps</a>
+      <a href="https://zhiyao92.github.io/ios-apps/privacy-policy.html">Privacy</a>
+      <a href="https://zhiyao92.github.io/ios-apps/terms-and-condition.html">Terms</a>
+      <a href="mailto:kelvin.vins@gmail.com">Contact</a>
+    </div>
+    <p>&copy; 2026 Zhi Yao Tan (DaddyCoding)</p>
+    <p class="disclaimer">
+      This app is not an official product of The Church of Jesus Christ of
+      Latter-day Saints. It is an independent study aid.
+    </p>
+  </div>
+</footer>
+
+<script>
+  // Facebook and Instagram in-app browsers cannot open the App Store.
+  (function () {
+    if (!/Instagram|FBAN|FBAV|FB_IAB|TikTok|musical_ly/i.test(navigator.userAgent || '')) return;
+    document.querySelectorAll('a[href*="apps.apple.com"]').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.getElementById('iab').classList.add('show');
+      });
+    });
+  })();
+</script>
+</body>
+</html>
